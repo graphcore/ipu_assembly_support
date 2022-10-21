@@ -1,0 +1,10 @@
+[package]
+name = "isa_md_to_rs"
+version = "0.1.0"
+authors = ["Tim Hutt <timh@graphcore.ai>"]
+edition = "2018"
+
+[dependencies]
+anyhow = { version = "1.0.41", features = ["backtrace"] }
+argh = "0.1.4"
+phf_codegen = "0.10.0"

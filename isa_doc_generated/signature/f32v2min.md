@@ -1,0 +1,11 @@
+# f32v2min $aDst0:Dst0+1 $aSrc0:Src0+1 $aSrc1:Src1+1
+
+*Single-precision* vector min
+
+
+## $aDst0:Dst0+1
+
+## $aSrc0:Src0+1
+
+## $aSrc1:Src1+1
+

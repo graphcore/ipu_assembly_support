@@ -1,0 +1,122 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "IPU Assembly",
+	"patterns": [
+		{
+			"include": "#instructions"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#labels"
+		},
+		{
+			"include": "#preprocessor"
+		},
+		{
+			"include": "#constants"
+		},
+		{
+			"include": "#registers"
+		},
+		{
+			"include": "#directives"
+		}
+	],
+	"repository": {
+
+		"instructions": {
+			"patterns": [
+				{
+					"comment": "Instructions that can run on the main pipeline",
+					"name": "keyword.mnemonic.ipu_asm",
+					"match": "\\b(abs|add|and|andc|bitrev8|br|bri|brneg|brnz|brnzdec|brpos|brz|call|cms|clz|cmpeq|cmpne|cmpslt|cmpult|delay|delaypic|delayxpic|exitneg|exitnz|exitpos|exitz|get|ld32|ld64|ld128|ld128step|ld32step|ld2x64pace|ldst64pace|ld2xst64pace|ldd16b16|ldd16a32|ldd16a64|ldd16v2a32|ld64a32|ldb16b16|ld64step|ld64b16pace|ld64a32pace|lds16step|lds8step|ldb16step|ldz16step|ldz8step|lds16|lds8|ldb16|ldz16|ldz8|ld64putcs|ld128putcs|max|atom|min|movz|mul|or|popc|put|roll16|roll8l|roll8r|rpt|run|runall|sans|send|sendoff|sendpic|sendpicp|setzi|shl|shr|shrs|shuf8x8hi|shuf8x8lo|sort4x16hi|sort4x16lo|sort8|sort8x8hi|sort8x8lo|st32|stm32|st64|st64pace|st32step|stm32step|st64step|sub|swap8|sync|tapack|trap|xnor|xor)\\b"
+				},
+				{
+					"comment": "Instructions that can run on the aux pipeline",
+					"name": "keyword.mnemonic.ipu_asm",
+					"match": "\\b(and|and64|andc|andc64|div|divu|f16tof32|f16v2add|f16v2absadd|f16v2axpy|f16v2class|f16v2cmac|f16v2cmpeq|f16v2cmpge|f16v2cmpgt|f16v2cmple|f16v2cmplt|f16v2cmpne|f16v2exp|f16v2exp2|f16v2gina|f16v2log2|f16v2ln|f16v2max|f16v2absmax|f16v2maxc|f16v2min|f16v2clamp|f16v2mul|f16v2sigm|f16v2sub|f16v2sum|f16v2sufromui|f16v2tanh|f16v2tof32|f16v4acc|f16v4absacc|f16v4add|f16v4absadd|f16v4hihoamp|f16v4sihoamp|f16v4sisoamp|f16v4aop|f16v4mix|f16v4class|f16v4cmac|f16v4cmpeq|f16v4cmpge|f16v4cmpgt|f16v4cmple|f16v4cmplt|f16v4cmpne|f16v4exp|f16v4exp2|f16v4gacc|f16v2grand|f16v4log2|f16v4ln|f16v4mac|f16v4max|f16v4absmax|f16v4maxc|f16v4min|f16v4clamp|f16v4mul|f16v4rmask|f16v4sigm|f16v4istacc|f16v4stacc|f16v4hihoslic|f16v4sihoslic|f16v4sisoslic|f16v4sub|f16v4sum|f16v4sufromui|f16v4tanh|f16v8absacc|f16v8acc|f16v8sqacc|f32add|f32absadd|f32absmax|f32sisoamp|f32atan|f32clamp|f32class|f32cmpeq|f32cmpge|f32cmpgt|f32cmple|f32cmplt|f32cmpne|f32cos|f32div|f32exp|f32exp2|f32gamma|f32max|f32min|f32oox|f32oorx|f32rem|f32int|f32log2|f32ln|f32mac|f32mul|f32sigm|f32sin|f32sqrt|f32sub|f32sufromui|f32tanh|f32tanhp1|f32tof16|f32toi32|f32toui32|f32v2add|f32v2absadd|f32v2aop|f32v2axpy|f32v2class|f32v2cmpeq|f32v2cmpge|f32v2cmpgt|f32v2cmple|f32v2cmplt|f32v2cmpne|f32v2gina|f32v2grand|f32v2mac|f32v2max|f32v2absmax|f32v2min|f32v2clamp|f32v2mul|f32v2rmask|f32sisoslic|f32v2sub|f32v2sufromui|f32v2tof16|f32v4acc|f32v4absacc|f32v4sqacc|f32v4tof16|f32fromi32|f32fromui32|mod|modu|not|not64|or|or64|roll16|roll32|setzi|sort4x16hi|sort4x16lo|sort4x32hi|sort4x32lo|uget|uput|urand32|urand64)\\b"
+				},
+				{
+					"comment": "Instructions that can run on both pipelines",
+					"name": "keyword.mnemonic.ipu_asm",
+					"match": "\\b(and|andc|or|roll16|setzi|sort4x16hi|sort4x16lo)\\b"
+				},
+				{
+					"comment": "Aliases for 'or' mostly",
+					"name": "keyword.mnemonic.ipu_asm",
+					"match": "\\b(nop|fnop|mov|zero|ldconst)\\b"
+				}
+		]
+		},
+
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.double-slash.ipu_asm",
+					"match": "//.*$"
+				},
+				{
+					"name": "comment.block.ipu_asm",
+					"begin": "/\\*",
+					"end": "\\*/"
+				}
+			]
+		},
+
+		"labels": {
+			"patterns": [
+				{
+					"name": "entity.name.function.ipu_asm",
+					"match": "^\\s*\\w+:"
+				}
+			]
+		},
+
+		"preprocessor": {
+			"patterns": [
+				{
+					"name": "keyword.other.ipu_asm",
+					"match": "^#\\s*(define|undef|include|import|error|pragma|line|using|if|ifdef|ifndef|elif|else|endif)\\s"
+				}
+			]
+		},
+
+		"constants": {
+			"patterns": [
+				{
+					"match": "\\b[0-9]+\\b",
+					"name": "constant.numeric.dec.ipu_asm"
+				},
+				{
+					"match": "\\b0x[0-9a-fA-F]+\\b",
+					"name": "constant.numeric.hex.ipu_asm"
+				}
+			]
+		},
+
+		"registers": {
+			"patterns": [
+				{
+					"match": "(^|,|\\s)\\$[ma][0-9]+(:([0-9]+|BU|BL))?\\b",
+					"name": "variable.parameter.ipu_asm"
+				},
+				{
+					"match": "(^|,|\\s)\\$(fp|lr|sp|mworker_base|mvertex_base|mzero|azero|azeros)\\b",
+					"name": "variable.parameter.ipu_asm"
+				}
+			]
+		},
+
+		"directives": {
+			"patterns": [
+				{
+					"name": "storage.ipu_asm",
+					"match": "^\\s*\\.\\w+\\s"
+				}
+			]
+		}
+	},
+	"scopeName": "source.ipu_asm"
+}

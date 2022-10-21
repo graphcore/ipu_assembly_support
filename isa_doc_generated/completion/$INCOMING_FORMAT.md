@@ -1,0 +1,3 @@
+# $INCOMING_FORMAT
+
+See exchange_internal_receive and timpl_tileincomingformat
