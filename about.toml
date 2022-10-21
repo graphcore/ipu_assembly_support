@@ -1,0 +1,10 @@
+# List of acceptable licenses. You can regenerate THIRD_PARTY_LICENSES_RUST.html with:
+# cargo about generate about.hbs > THIRD_PARTY_LICENSES_RUST.html
+accepted = [
+    "Apache-2.0",
+    "MIT",
+    "ISC",
+    "CC0-1.0",
+    "BSD-3-Clause",
+    "Unicode-DFS-2016",
+]

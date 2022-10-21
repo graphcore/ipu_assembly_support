@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es2019",
+		"lib": [ "es2019" ],
+		"outDir": "dist",
+		"rootDir": ".",
+		"sourceMap": true,
+		"alwaysStrict": true,
+		"noUnusedLocals": false,
+		"noUnusedParameters": true,
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"strict": true
+	},
+	"include": [
+		"client"
+	],
+	"exclude": [
+		"node_modules",
+		"buildsystem",
+		"server"
+	]
+}
